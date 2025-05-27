@@ -1,0 +1,26 @@
+{
+  "etapy": [
+    {
+      "id": "ETAP 1",
+      "nazwa": "Frontend – Dashboard",
+      "zadania": [
+        {
+          "id": "Z1",
+          "nazwa": "Layout i panel",
+          "atomy": [
+            {
+              "id": "A1.1.1",
+              "nazwa": "DashboardLayout",
+              "h1": "Stwórz komponent o nazwie DashboardLayout z górnym menu, ikonami i przełączaniem zakładek"
+            },
+            {
+              "id": "A1.1.2",
+              "nazwa": "HomePanel",
+              "h1": "Stwórz komponent HomePanel z powitaniem użytkownika, 3 panelami statystyk i listą działań AI"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

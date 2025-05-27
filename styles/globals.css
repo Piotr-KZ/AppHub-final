@@ -1,0 +1,12 @@
+body {
+  font-family: 'Segoe UI', sans-serif;
+  margin: 2rem;
+  line-height: 1.6;
+  background-color: #f8f8f8;
+  color: #222;
+}
+
+h1 {
+  font-size: 2rem;
+  color: #333;
+}
