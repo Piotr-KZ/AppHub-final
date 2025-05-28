@@ -1,4 +1,3 @@
-=== LiveScreenPanel.tsx ===
 import React, { useState } from 'react';
 import IframePreview from './IframePreview';
 import AiCommentPanel from './AiCommentPanel';

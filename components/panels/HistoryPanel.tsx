@@ -1,4 +1,3 @@
-=== HistoryPanel.tsx ===
 import React from 'react';
 
 const mockHistory = [

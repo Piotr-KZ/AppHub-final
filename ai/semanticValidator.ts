@@ -1,4 +1,3 @@
-=== ai/semanticValidator.ts ===
 export const validateSemanticMatch = (h1: string, h2: string): number => {
   const norm = (str: string) =>
     str.toLowerCase().replace(/[^a-z0-9]/gi, '').slice(0, 300);

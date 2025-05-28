@@ -1,4 +1,3 @@
-=== api/atom-ai.ts ===
 import { NextApiRequest, NextApiResponse } from 'next';
 import { attemptPR } from '../../ai/retryManager';
 import { proposeNewH1 } from '../../ai/strategModule';

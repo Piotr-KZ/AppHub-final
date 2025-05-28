@@ -1,4 +1,3 @@
-=== ai/retryManager.ts ===
 import { generateH2 } from './prGenerator';
 import { validateSemanticMatch } from './semanticValidator';
 
