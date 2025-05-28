@@ -1,4 +1,3 @@
-import '../styles/globals.css'
 // index.tsx – Strona powitalna AppHub v3.1
 import React from 'react';
 
