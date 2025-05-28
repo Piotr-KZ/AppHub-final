@@ -1,4 +1,3 @@
-=== utils/snapshotManager.ts ===
 import { readJSON, writeJSON } from './projectStore';
 import fs from 'fs';
 import path from 'path';
