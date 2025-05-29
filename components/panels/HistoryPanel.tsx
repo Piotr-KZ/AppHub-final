@@ -1,49 +1,48 @@
-import React from 'react';
+// components/panels/HistoryPanel.tsx
 
-const mockHistory = [
-  {
-    type: 'Release',
-    version: 'v2.4.1',
-    date: '2025-05-21 21:55',
-    author: 'Walidator',
-    hash: 'release_hash_xyz123'
-  },
-  {
-    type: 'Rollback',
-    version: 'v2.4.0',
-    date: '2025-05-20 17:38',
-    author: 'Strateg',
-    hash: 'rollback_9f44d'
-  }
-];
+import { useEffect, useState } from 'react';
+
+interface HistoryEntry {
+  version: string;
+  date: string;
+  author?: string;
+  description?: string;
+  hash?: string;
+}
 
 export default function HistoryPanel() {
-  return (
-    <div>
-      <h2 className="text-xl font-bold mb-4">📜 Historia projektu</h2>
+  const [data, setData] = useState<HistoryEntry[]>([]);
+  const [error, setError] = useState('');
 
-      <table className="w-full border text-sm">
-        <thead className="bg-gray-100">
-          <tr>
-            <th className="border px-2 py-1">Typ</th>
-            <th className="border px-2 py-1">Wersja</th>
-            <th className="border px-2 py-1">Data</th>
-            <th className="border px-2 py-1">Autor</th>
-            <th className="border px-2 py-1">Hash</th>
-            <th className="border px-2 py-1">Akcja</th>
+  useEffect(() => {
+    fetch('/api/history')
+      .then((res) => res.json())
+      .then((json) => setData(json.entries || []))
+      .catch(() => setError('❌ Błąd pobierania historii.'));
+  }, []);
+
+  return (
+    <div className="space-y-4">
+      <h2 className="text-xl font-bold">📜 Historia wersji projektu</h2>
+      {error && <p className="text-red-500">{error}</p>}
+      <table className="w-full border-collapse border text-sm">
+        <thead>
+          <tr className="bg-gray-100">
+            <th className="border p-2">Wersja</th>
+            <th className="border p-2">Data</th>
+            <th className="border p-2">Opis</th>
+            <th className="border p-2">Autor</th>
+            <th className="border p-2">Hash</th>
           </tr>
         </thead>
         <tbody>
-          {mockHistory.map((entry, i) => (
-            <tr key={i} className="hover:bg-blue-50">
-              <td className="border px-2 py-1">{entry.type}</td>
-              <td className="border px-2 py-1">{entry.version}</td>
-              <td className="border px-2 py-1">{entry.date}</td>
-              <td className="border px-2 py-1">{entry.author}</td>
-              <td className="border px-2 py-1">{entry.hash}</td>
-              <td className="border px-2 py-1">
-                <button className="text-blue-600 underline text-xs">Zobacz</button>
-              </td>
+          {data.map((entry, i) => (
+            <tr key={i}>
+              <td className="border p-2">{entry.version}</td>
+              <td className="border p-2">{entry.date}</td>
+              <td className="border p-2">{entry.description}</td>
+              <td className="border p-2">{entry.author || '–'}</td>
+              <td className="border p-2">{entry.hash?.slice(0, 8) || '–'}</td>
             </tr>
           ))}
         </tbody>
@@ -51,3 +50,4 @@ export default function HistoryPanel() {
     </div>
   );
 }
+
